@@ -129,7 +129,7 @@ export default function SudokuPage() {
       <SudokuGrid 
         cellValues={cellValues}
         selectedCell={selectedCell}
-        highlightedNumber={highlightedNumber}
+        highlightedNumber={highlightedNumber} 
         onCellClick={handleCellClick}
         onNumberClick={handleNumberClick}
         onSolve={handleSolve}
