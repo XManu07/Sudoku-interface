@@ -53,10 +53,6 @@ export default function SidebarButtons({
     }
   }
 
-  const handleSolve = () => {
-    onSolve();
-  }
-
   return (
     <div className="flex flex-col gap-8 md:ml-6">
       <button
@@ -115,7 +111,7 @@ export default function SidebarButtons({
       </button>
 
       <button
-        onClick={handleSolve}
+        onClick={onSolve}
         className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
       >
         Solve
