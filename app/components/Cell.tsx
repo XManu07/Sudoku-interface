@@ -25,7 +25,7 @@ export default function Cell({
     if (value !== null) return null;
 
     return (
-      <div className="grid grid-cols-3 grid-rows-3 w-full h-full text-xs">
+      <div className="grid grid-cols-3 grid-rows-3 w-full h-full text-xs text-gray-500">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
           <div key={num} className="flex items-center justify-center">
             {pencilValues.includes(num) ? num : ""}
