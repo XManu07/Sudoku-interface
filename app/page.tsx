@@ -24,6 +24,9 @@ export default function SudokuPage() {
   const [highlightedNumber, setHighlightedNumber] = useState<number | null>(null);
   const [numbersOccurrences, setNumbersOccurrences] = useState<(number | null)[]>(Array(9).fill(null));
   const [error, setError] = useState("");
+  const [cellPencilValues, setCellPencilValues] = useState<(number | null)[][]>(
+    Array(81).fill(Array(9).fill(null))
+  );
 
   const updateNumbersOccurrences = () => {
     const newNrOccurrences = Array(9).fill(null);
@@ -107,8 +110,6 @@ export default function SudokuPage() {
     }
   };
 
-  const handleSave = () => {};
-
   const handleCellClick = (index: number) => {
     setSelectedCell(index);
 
@@ -158,6 +159,7 @@ export default function SudokuPage() {
         onCellClick={handleCellClick}
         onNumberClick={handleNumberClick}
         numbersAppearance={numbersOccurrences}
+        cellPencilValues={cellPencilValues}
         error={error}
       />
 
@@ -166,7 +168,6 @@ export default function SudokuPage() {
         onSolve={handleSolve}
         onClear={handleClear}
         onHint={handleHint}
-        onSave={handleSave}
         onGenerate={handleGenerate}
       />
     </main>
