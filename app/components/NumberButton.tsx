@@ -19,15 +19,15 @@ export default function NumberButton({
       onClick={onClick}
       className={`
         text-white 
-        ${isHighlighted ? 'bg-gray-700' : 'bg-gray-900 hover:bg-gray-700'}
+       
+        ${isHighlighted ? "bg-violet-300" : "bg-gray-900 hover:bg-violet-300 hover:text-violet-950 " }
         focus:outline-none focus:ring-4 focus:ring-gray-300
         font-bold rounded-lg text-2xl px-4 py-1 me-2 mb-2
-        transition-colors duration-200`
-      }
+        transition-colors duration-200 border-2 border-violet-950`}
     >
       {number}
       {numberAppearance && (
-        <div className="text-gray-300 text-sm align-text-bottom font-medium ">
+        <div className="text-white text-sm align-text-bottom font-medium ">
           {9 - numberAppearance == 0 ? null : 9 - numberAppearance}
         </div>
       )}

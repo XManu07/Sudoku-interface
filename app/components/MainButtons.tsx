@@ -18,7 +18,7 @@ export default function MainButtons({
   onDifficultyChange,
 }: MainButtonsProps) {
   return (
-    <div className="flex flex-col gap-5 mr-6 mt-4">
+    <div className="flex flex-col gap-12 mr-6 mt-22">
       <button
         onClick={onPencilClick}
         className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg shadow-md
@@ -39,11 +39,11 @@ export default function MainButtons({
       
       <button
         onClick={onEraserClick}
-        className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg shadow-md
+        className={`flex items-center justify-center gap-2 px-4 py-2 rounded-2xl shadow-md
                   transition-colors ${
                     eraserActive
-                      ? 'bg-red-500 text-white'
-                      : 'bg-gray-100 hover:bg-red-100 text-gray-800'
+                      ? 'bg-violet-400 text-violet-950 rounded-2xl'
+                      : 'bg-violet-500 border-2 rounded-2xl border-violet-950 hover:bg-violet-900 text-white'
                   }`}
         title="Eraser Mode"
       >
@@ -64,7 +64,7 @@ export default function MainButtons({
           onChange={(e) => {
             onDifficultyChange(e.target.value as Difficulty);
           }}
-          className="px-4 py-2 rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="px-4 py-2 rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-violet-900"
         >
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>

@@ -54,7 +54,7 @@ export default function SidebarButtons({
     <div className="flex flex-col gap-8 md:ml-6">
       <button
         onClick={handleOpen}
-        className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
+        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
       >
         Add
       </button>
@@ -95,28 +95,28 @@ export default function SidebarButtons({
 
       <button
         onClick={onGenerate}
-        className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
+        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
       >
         Generate
       </button>
 
       <button
         onClick={onSolve}
-        className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
+        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
       >
         Solve
       </button>
 
       <button
         onClick={onClear}
-        className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
+        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
       >
         Clear
       </button>
 
       <button
         onClick={onHint}
-        className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
+        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
       >
         Hint
       </button>
