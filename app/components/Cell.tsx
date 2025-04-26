@@ -54,9 +54,9 @@ export default function Cell({
         ${row === 0 ? "border-t border-t-gray-800" : ""}
         ${
           isSelected
-            ? "bg-gray-400"
+            ? "bg-gray-500"
             : isHiglighted
-            ? "bg-gray-200"
+            ? "bg-gray-400"
             : "bg-transparent"
         }
         cursor-pointer hover:bg-gray-100 transition-colors

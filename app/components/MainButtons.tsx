@@ -21,12 +21,12 @@ export default function MainButtons({
     <div className="flex flex-col gap-12 mr-6 mt-22">
       <button
         onClick={onPencilClick}
-        className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg shadow-md
-                  transition-colors ${
-                    pencilActive
-                      ? 'bg-gray-800 text-white'
-                      : 'bg-gray-100 hover:bg-blue-100 text-gray-800'
-                  }`}
+        className={`flex items-center justify-center gap-2 px-4 py-2 rounded-2xl shadow-md
+          transition-colors ${
+            pencilActive
+              ? "bg-violet-500 border-violet-950 hover:bg-violet-900 text-white"
+              : "bg-white text-black"
+          }`}
         title="Pencil Mode"
       >
         <img
@@ -36,15 +36,15 @@ export default function MainButtons({
         />
         <span className="font-medium">Pencil</span>
       </button>
-      
+
       <button
         onClick={onEraserClick}
         className={`flex items-center justify-center gap-2 px-4 py-2 rounded-2xl shadow-md
-                  transition-colors ${
-                    eraserActive
-                      ? 'bg-violet-400 text-violet-950 rounded-2xl'
-                      : 'bg-violet-500 border-2 rounded-2xl border-violet-950 hover:bg-violet-900 text-white'
-                  }`}
+          transition-colors ${
+            eraserActive
+              ? "bg-violet-500 border-violet-950 hover:bg-violet-900 text-white"
+              : "bg-white text-black"
+          }`}
         title="Eraser Mode"
       >
         <img
@@ -55,8 +55,11 @@ export default function MainButtons({
         <span className="font-medium">Eraser</span>
       </button>
       <div className="flex flex-col">
-        <label htmlFor="difficulty-select" className="mb-2 font-medium text-gray-700">
-          Difficulty Level
+        <label
+          htmlFor="difficulty-select"
+          className="mb-2 font-medium text-gray-700"
+        >
+          Difficulty
         </label>
         <select
           id="difficulty-select"
@@ -68,9 +71,6 @@ export default function MainButtons({
         >
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-          <option value="expert">Expert</option>
-          <option value="master">Master</option>
         </select>
       </div>
     </div>
