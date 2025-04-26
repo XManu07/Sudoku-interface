@@ -4,6 +4,7 @@ import { useState } from "react";
 import SudokuGrid from "./components/SudokuGrid";
 import SidebarButtons from "./components/SidebarButtons";
 import { generate, solve, hint } from "sudoku-core";
+import { Difficulty } from "sudoku-core";
 import { SolvingResult } from "sudoku-core/dist/cjs/types";
 import MainButtons from "./components/MainButtons";
 
@@ -40,6 +41,7 @@ export default function SudokuPage() {
   const [pencilActive, setPencilActive] = useState(false);
   const [eraserActive, setEraserActive] = useState(false);
 
+  const [difficulty, setDifficulty] = useState<Difficulty>("easy") ;
   const updateNumbersOccurrences = () => {
     const newNrOccurrences = Array(9).fill(null);
     cellValues.map((index) => {
@@ -220,6 +222,10 @@ export default function SudokuPage() {
     setPencilActive(false);
   };
 
+  const hancleDifficultyChange = (diff: Difficulty) => {
+    setDifficulty(diff);
+  }
+
   return (
     <main
       className="flex min-h-screen flex-row justify-center p-4 items-start  gap-8
@@ -230,6 +236,8 @@ export default function SudokuPage() {
         onEraserClick={handleEraserClick}
         pencilActive={pencilActive}
         eraserActive={eraserActive}
+        difficulty={difficulty}
+        onDifficultyChange={hancleDifficultyChange}
       />
       <SudokuGrid
         cellValues={cellValues}
