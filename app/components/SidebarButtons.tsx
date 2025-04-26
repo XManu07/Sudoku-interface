@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 
@@ -7,7 +7,6 @@ interface SidebarButtonsProps {
   onSolve: () => void;
   onClear: () => void;
   onHint: () => void;
-  onSave: () => void;
   onGenerate: () => void;
 }
 
@@ -16,42 +15,40 @@ export default function SidebarButtons({
   onSolve,
   onClear,
   onHint,
-  onSave,
   onGenerate,
 }: SidebarButtonsProps) {
-
   const [isOpen, setIsOpen] = useState(false);
-  const [puzzleInput, setPuzzleInput] = useState('');
-  const [error, setError] = useState<string |null>(null);
+  const [puzzleInput, setPuzzleInput] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleOpen = () => {
     setIsOpen(true);
     setError(null);
-  }
+  };
 
-  const handlePuzzleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handlePuzzleInputChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setPuzzleInput(e.target.value);
-    if (error) 
-      setError(null);
-  }
+    if (error) setError(null);
+  };
 
   const handleClose = () => {
     setIsOpen(false);
-    setPuzzleInput('');
+    setPuzzleInput("");
     setError(null);
     setIsLoading(false);
-  }
+  };
 
   const handleSubmit = () => {
     if (puzzleInput.length < 81) {
       setError("Puzzle must be 81 numbers long.");
-    }
-    else {
+    } else {
       handleClose();
       onAdd(puzzleInput);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col gap-8 md:ml-6">
@@ -66,31 +63,27 @@ export default function SidebarButtons({
         <div className="fixed inset-0 bg-gray-950 opacity-95 flex flex-col items-center justify-center z-50">
           <p className="text-white mb-3">
             Enter 81 characters representing your Sudoku puzzle.
-            <br/> 
+            <br />
             Use 0 for empty cells and 1-9 for filled cells.
           </p>
-          <textarea 
+          <textarea
             value={puzzleInput}
             onChange={handlePuzzleInputChange}
             className="bg-white w-100 h-32 border border-gra300 rounded"
             placeholder="Your string here"
           />
 
-          {error && (
-            <div className="text-red-500 mb-3">{error}</div>
-          )}
-          {isLoading && (
-            <p className="text-blue-500 mb-2">Loading...</p>
-          )}
+          {error && <div className="text-red-500 mb-3">{error}</div>}
+          {isLoading && <p className="text-blue-500 mb-2">Loading...</p>}
 
           <div className="flex justify-end mt-5 gap-2">
-            <button 
+            <button
               className="px-4 py-2 text-black rounded bg-white hover:bg-gray-200"
               onClick={handleClose}
             >
               Cancel
             </button>
-            <button 
+            <button
               onClick={handleSubmit}
               className="px-4 py-2 text-black rounded bg-white  hover:bg-gray-200"
             >
@@ -98,9 +91,6 @@ export default function SidebarButtons({
             </button>
           </div>
         </div>
-
-        
-        
       )}
 
       <button
@@ -116,26 +106,19 @@ export default function SidebarButtons({
       >
         Solve
       </button>
-      
+
       <button
         onClick={onClear}
         className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
       >
         Clear
       </button>
-      
+
       <button
         onClick={onHint}
         className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
       >
         Hint
-      </button>
-      
-      <button
-        onClick={onSave}
-        className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition-colors min-w-32"
-      >
-        Save
       </button>
     </div>
   );
