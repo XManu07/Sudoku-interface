@@ -296,6 +296,8 @@ export default function SudokuPage() {
       setError("No solution found.");
       setSolution(Array(81).fill(null));
     }
+    setSelectedCell(null);
+    setHighlightedNumber(0);
   };
 
   const hancleDifficultyChange = (diff: Difficulty) => {
@@ -343,6 +345,7 @@ export default function SudokuPage() {
             numbersAppearance={numbersOccurrences}
             cellPencilValues={cellPencilValues}
             error={error}
+            isTimerRunning={isTimerRunning}
           />
         </div>
 
