@@ -22,7 +22,7 @@ export default function MainButtons({
       <button
         onClick={onPencilClick}
         className={`flex items-center justify-center gap-2 px-4 py-2 rounded-2xl shadow-md
-          transition-colors hover:bg-violet-400
+          transition-colors hover:bg-violet-400 cursor-pointer
           ${
             pencilActive
               ? "bg-violet-500 border-violet-950 hover:bg-violet-900 text-white"
@@ -41,7 +41,7 @@ export default function MainButtons({
       <button
         onClick={onEraserClick}
         className={`flex items-center justify-center gap-2 px-4 py-2 rounded-2xl shadow-md
-          transition-colors hover:bg-violet-400
+          transition-colors hover:bg-violet-400 cursor-pointer
           ${
             eraserActive
               ? "bg-violet-500 border-violet-950 hover:bg-violet-900 text-white"
@@ -69,8 +69,8 @@ export default function MainButtons({
           onChange={(e) => {
             onDifficultyChange(e.target.value as Difficulty);
           }}
-          className="px-4 py-3 rounded-2xl border border-gray-300 bg-white shadow-sm 
-                    focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-violet-900"
+          className="px-4 py-3 rounded-2xl border border-gray-300 bg-white shadow-sm  cursor-pointer 
+                    focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-violet-900 "
         >
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>

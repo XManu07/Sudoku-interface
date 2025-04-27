@@ -22,7 +22,7 @@ export default function Timer({ elapsedTime, handleTimer }: TimerProps) {
       <button
         onClick={() => handleTimer()}
         className="flex items-center justify-center p-2 rounded-full w-10 h-10
-                  bg-violet-400 hover:bg-violet-900 transition-colors "
+                  bg-violet-400 hover:bg-violet-900 transition-colors cursor-pointer"
       >
         <img src="stop-icon.svg" alt="Pause" className="w-5 h-5" />
       </button>

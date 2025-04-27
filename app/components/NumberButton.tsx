@@ -18,8 +18,7 @@ export default function NumberButton({
       type="button"
       onClick={onClick}
       className={`
-        text-white 
-       
+        text-white cursor-pointer
         ${isHighlighted ? "bg-violet-300" : "bg-gray-900 hover:bg-violet-300 hover:text-violet-950 " }
         focus:outline-none focus:ring-4 focus:ring-gray-300
         font-bold rounded-lg text-2xl px-4 py-1 me-2 mb-2
