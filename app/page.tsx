@@ -302,6 +302,10 @@ export default function SudokuPage() {
     setDifficulty(diff);
   };
 
+  const handleTimerRunning = () => {
+    isTimerRunning ? stopTimer : startTimer;
+  };
+
   return (
     <main className="flex flex-col min-h-screen items-center justify-start bg-gray-900 p-2 gap-4">
       <Header />
@@ -317,19 +321,16 @@ export default function SudokuPage() {
           />
         </div>
 
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-3">
           <div className="flex w-full max-w-md justify-between items-center">
             <div className="text-white font-mono text-xl">
               Mistakes: {mistakes}/3
             </div>
             <div className="flex items-center gap-4">
-              <Timer elapsedTime={elapsedTime} />
-              <button
-                onClick={isTimerRunning ? stopTimer : startTimer}
-                className="flex items-center justify-center p-2 rounded-full bg-violet-400 hover:bg-violet-900/40 transition-colors "
-              >
-                <img src="stop-icon.svg" alt="Pause" className="w-5 h-5" />
-              </button>
+              <Timer
+                elapsedTime={elapsedTime}
+                handleTimer={handleTimerRunning}
+              />
             </div>
           </div>
 

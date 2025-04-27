@@ -22,9 +22,10 @@ export default function MainButtons({
       <button
         onClick={onPencilClick}
         className={`flex items-center justify-center gap-2 px-4 py-2 rounded-2xl shadow-md
-          transition-colors ${
+          transition-colors hover:bg-violet-400
+          ${
             pencilActive
-              ? "bg-violet-500 border-violet-950 hover:bg-violet-400 text-white"
+              ? "bg-violet-500 border-violet-950 hover:bg-violet-900 text-white"
               : "bg-white text-black"
           }`}
         title="Pencil Mode"
@@ -40,9 +41,10 @@ export default function MainButtons({
       <button
         onClick={onEraserClick}
         className={`flex items-center justify-center gap-2 px-4 py-2 rounded-2xl shadow-md
-          transition-colors ${
+          transition-colors hover:bg-violet-400
+          ${
             eraserActive
-              ? "bg-violet-500 border-violet-950 hover:bg-violet-400 text-white"
+              ? "bg-violet-500 border-violet-950 hover:bg-violet-900 text-white"
               : "bg-white text-black"
           }`}
         title="Eraser Mode"
