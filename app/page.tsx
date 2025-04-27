@@ -303,7 +303,7 @@ export default function SudokuPage() {
   };
 
   const handleTimerRunning = () => {
-    isTimerRunning ? stopTimer : startTimer;
+    isTimerRunning ? stopTimer() : startTimer();
   };
 
   return (
