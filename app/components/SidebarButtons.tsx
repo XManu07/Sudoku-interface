@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SidebarButton from "./SidebarButton";
 
 interface SidebarButtonsProps {
   onAdd: (sudokustring: string) => void;
@@ -52,12 +53,7 @@ export default function SidebarButtons({
 
   return (
     <div className="flex flex-col gap-8 md:ml-6">
-      <button
-        onClick={handleOpen}
-        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
-      >
-        Add
-      </button>
+      <SidebarButton action={handleOpen} buttonName={"Add"} />
 
       {isOpen && (
         <div className="fixed inset-0 bg-gray-950 opacity-95 flex flex-col items-center justify-center z-50">
@@ -93,33 +89,13 @@ export default function SidebarButtons({
         </div>
       )}
 
-      <button
-        onClick={onGenerate}
-        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
-      >
-        Generate
-      </button>
+      <SidebarButton action={onGenerate} buttonName={"Generate"} />
 
-      <button
-        onClick={onSolve}
-        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
-      >
-        Solve
-      </button>
+      <SidebarButton action={onSolve} buttonName={"Solve"} />
 
-      <button
-        onClick={onClear}
-        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
-      >
-        Clear
-      </button>
+      <SidebarButton action={onClear} buttonName={"Clear"} />
 
-      <button
-        onClick={onHint}
-        className="px-4 py-2 bg-gray-900 rounded-2xl text-white  hover:border-violet-300 hover:text-violet-300 transition-colors min-w-32 border-2 border-violet-950"
-      >
-        Hint
-      </button>
+      <SidebarButton action={onHint} buttonName={"Hint"} />
     </div>
   );
 }

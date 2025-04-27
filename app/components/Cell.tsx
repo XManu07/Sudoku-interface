@@ -50,13 +50,13 @@ export default function Cell({
             ? "border-b-2 border-b-gray-800"
             : "border-b border-b-gray-800"
         }
-        ${col === 0 ? "border-l border-l-gray-800" : ""}
-        ${row === 0 ? "border-t border-t-gray-800" : ""}
+        ${col === 0 ? "border-l border-l-violet-800" : ""}
+        ${row === 0 ? "border-t border-t-violet-800" : ""}
         ${
           isSelected
-            ? "bg-gray-500"
+            ? "bg-violet-500"
             : isHiglighted
-            ? "bg-gray-400"
+            ? "bg-violet-300"
             : "bg-transparent"
         }
         cursor-pointer hover:bg-gray-100 transition-colors
