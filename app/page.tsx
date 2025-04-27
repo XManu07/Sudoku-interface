@@ -285,7 +285,7 @@ export default function SudokuPage() {
     setMistakes(0);
     setResetSignal(true);
     setError("");
-    setCellPencilValues(Array(81).fill([]))
+    setCellPencilValues(Array(81).fill([]));
     const sudoku = generate(difficulty);
     setCellValues(sudoku);
 
@@ -300,14 +300,13 @@ export default function SudokuPage() {
 
   const hancleDifficultyChange = (diff: Difficulty) => {
     setDifficulty(diff);
-    console.log(difficulty);
   };
 
   return (
-    <main className="flex flex-col min-h-screen items-center justify-start bg-gray-900 p-8 gap-8">
+    <main className="flex flex-col min-h-screen items-center justify-start bg-gray-900 p-2 gap-4">
       <Header />
-      <div className="flex flex-row justify-center items-start gap-12">
-        <div className="flex flex-col gap-24 items-center mt-30">
+      <div className="flex flex-row justify-center items-start gap-12 max-w-7xl">
+        <div className="flex flex-col gap-24 items-center mt-30 flex-wrap">
           <MainButtons
             onPencilClick={handlePencilClick}
             onEraserClick={handleEraserClick}
@@ -319,11 +318,10 @@ export default function SudokuPage() {
         </div>
 
         <div className="flex flex-col items-center gap-6">
-          <div className="flex w-full max-w-md justify-between items-center mb-4">
+          <div className="flex w-full max-w-md justify-between items-center">
             <div className="text-white font-mono text-xl">
               Mistakes: {mistakes}/3
             </div>
-
             <div className="flex items-center gap-4">
               <Timer elapsedTime={elapsedTime} />
               <button

@@ -50,8 +50,8 @@ export default function Cell({
             ? "border-b-2 border-b-gray-800"
             : "border-b border-b-gray-800"
         }
-        ${col === 0 ? "border-l border-l-gray-800" : ""}
-        ${row === 0 ? "border-t border-t-gray-800" : ""}
+        ${col === 0 ? "border-l border-l-violet-800" : ""}
+        ${row === 0 ? "border-t border-t-violet-800" : ""}
         ${
           isSelected
             ? "bg-gray-500"
