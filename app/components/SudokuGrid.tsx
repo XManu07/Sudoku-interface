@@ -13,7 +13,7 @@ interface SudokuGridProps {
   onNumberClick: (number: number) => void;
   error: string;
   cellPencilValues: (number | null)[][];
-  isTimerRunning: boolean;
+  showGrid: boolean;
 }
 
 export default function SudokuGrid({
@@ -25,7 +25,7 @@ export default function SudokuGrid({
   onNumberClick,
   error,
   cellPencilValues,
-  isTimerRunning,
+  showGrid,
 }: SudokuGridProps) {
   const cells = Array(81)
     .fill(null)
@@ -62,7 +62,7 @@ export default function SudokuGrid({
     <div className="flex flex-col items-center">
       <div className="bg-gray-200 p-4 shadow-2xl rounded-2xl">
         <div className="grid grid-cols-9 grid-rows-9 border-4 border-gray-800 w-[min(90vw,450px)] h-[min(90vw,450px)] mx-auto">
-          {isTimerRunning ? cells : (
+          {showGrid ? cells : (
             <div className="col-span-9 row-span-9 flex items-center justify-center text-xl text-gray-500">
             </div>
           )}

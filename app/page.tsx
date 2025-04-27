@@ -56,6 +56,16 @@ export default function SudokuPage() {
   const [pencilActive, setPencilActive] = useState(false);
   const [eraserActive, setEraserActive] = useState(false);
   const [difficulty, setDifficulty] = useState<Difficulty>("easy");
+  const [showGrid, setShowGrid] = useState(false);
+
+  useEffect(() => {
+    isTimerRunning ? setShowGrid(true) : setShowGrid(false);
+    const allCellsFilled = cellValues.every((val) => val !== null);
+    if (allCellsFilled) {
+      stopTimer();
+      setShowGrid(true);
+    }
+  }, [isTimerRunning]);
 
   useEffect(() => {
     if (isTimerRunning) {
@@ -82,17 +92,6 @@ export default function SudokuPage() {
       }, 0);
     }
   }, [resetSignal]);
-
-  useEffect(() => {
-    const allCellsFilled = cellValues.every((val) => val !== null);
-    const allCellsCorrect = cellValues.every(
-      (val, idx) => val === solution[idx]
-    );
-
-    if (allCellsFilled && allCellsCorrect) {
-      stopTimer();
-    }
-  }, [cellValues, solution]);
 
   useEffect(() => {
     if (cellValues) {
@@ -164,6 +163,20 @@ export default function SudokuPage() {
     setCellPencilValues(Array(81).fill([]));
     setSelectedCell(null);
     setHighlightedNumber(0);
+  };
+
+  const handleHint = () => {
+    const hintObject = hint(cellValues);
+    setCellValues(parseSolvingResultToArray(hintObject));
+    updateNumbersOccurrences();
+
+    if (hintObject.steps && hintObject.steps.length) {
+      setSelectedCell(hintObject.steps[0].updates[0].index);
+      setHighlightedNumber(hintObject.steps[0].updates[0].filledValue);
+    } else {
+      setSelectedCell(null);
+      setHighlightedNumber(0);
+    }
   };
 
   const updateCellValues = (nr: number) => {
@@ -255,20 +268,6 @@ export default function SudokuPage() {
     }
   };
 
-  const handleHint = () => {
-    const hintObject = hint(cellValues);
-    setCellValues(parseSolvingResultToArray(hintObject));
-    updateNumbersOccurrences();
-
-    if (hintObject.steps && hintObject.steps.length) {
-      setSelectedCell(hintObject.steps[0].updates[0].index);
-      setHighlightedNumber(hintObject.steps[0].updates[0].filledValue);
-    } else {
-      setSelectedCell(null);
-      setHighlightedNumber(0);
-    }
-  };
-
   const handleCellClick = (index: number) => {
     setSelectedCell(index);
     const clickedValue = cellValues[index];
@@ -345,7 +344,7 @@ export default function SudokuPage() {
             numbersAppearance={numbersOccurrences}
             cellPencilValues={cellPencilValues}
             error={error}
-            isTimerRunning={isTimerRunning}
+            showGrid={showGrid}
           />
         </div>
 
