@@ -1,17 +1,44 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: authenticate user here
-    console.log({ email, password });
-  };
+const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
+  
+  try {
+    const res = await fetch("http://localhost:8000/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (!res.ok) {
+      const data = await res.json();
+      console.error(data.message || "Login failed.");
+      alert(data.message || "Login failed.");
+      return;
+    }
+
+    const data = await res.json();
+    localStorage.setItem("authToken", data.authToken);
+
+    router.push("/home");
+  } catch (err) {
+    console.error("Something went wrong: ", err);
+    alert("An error occurred. Please try again.");
+  }
+};
+
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-900 p-4">
