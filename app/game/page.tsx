@@ -8,7 +8,6 @@ import { Difficulty } from "sudoku-core";
 import { SolvingResult } from "sudoku-core/dist/cjs/types";
 import MainButtons from "../components/MainButtons";
 import Timer from "../components/Timer";
-import Header from "../components/Header";
 
 function parseSolvingResultToArray(solvingResult: SolvingResult) {
   let arrayResult = Array(81).fill(null);
@@ -309,7 +308,6 @@ export default function Game() {
 
   return (
     <main className="flex flex-col min-h-screen items-center justify-start bg-gray-900 p-2 gap-4">
-      <Header />
       <div className="flex flex-row justify-center items-start gap-12 max-w-7xl">
         <div className="flex flex-col gap-24 items-center mt-30 flex-wrap">
           <MainButtons

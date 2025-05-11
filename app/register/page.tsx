@@ -10,7 +10,7 @@ export default function Register() {
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: send data to API 
+
     console.log({ email, password, confirmPassword });
   };
 
