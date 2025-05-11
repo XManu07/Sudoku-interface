@@ -1,0 +1,53 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: authenticate user here
+    console.log({ email, password });
+  };
+
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-gray-900 p-4">
+      <div className="bg-gray-800 p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <h1 className="text-3xl font-bold text-white mb-6 text-center">Login</h1>
+        <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <input
+            type="email"
+            placeholder="Email"
+            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button
+            type="submit"
+            className="bg-violet-600 hover:bg-violet-800 text-white font-semibold py-3 rounded-xl transition duration-200"
+          >
+            Log In
+          </button>
+        </form>
+        <p className="text-sm text-white mt-4 text-center">
+          Don't have an account?{" "}
+          <Link href="/register" className="text-violet-300 hover:underline">
+            Register
+          </Link>
+        </p>
+      </div>
+    </main>
+  );
+}
