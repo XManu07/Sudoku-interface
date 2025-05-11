@@ -5,13 +5,15 @@ import Link from "next/link";
 
 export default function Landing() {
   const router = useRouter();
+  const authToken = localStorage.getItem("authToken"); 
 
-  const handleStartGame = () => {
-    const token = localStorage.getItem("authToken");
-    if (!token) {
-      router.push("/login");
-    } else {
+  const handleStartGameClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    if (authToken) {
       router.push("/game");
+    } else {
+      router.push("/login");
     }
   };
 
@@ -28,7 +30,7 @@ export default function Landing() {
 
       <div className="flex flex-col md:flex-row gap-8 items-center">
         <button
-          onClick={handleStartGame}
+          onClick={handleStartGameClick}
           className="px-6 py-3 bg-white text-black font-semibold rounded-2xl hover:bg-violet-400 hover:text-white hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950 min-w-48"
         >
           Start Game
