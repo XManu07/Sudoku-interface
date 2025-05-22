@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function RegisterPage() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,9 +29,9 @@ export default function RegisterPage() {
           Accept: "application/json",
         },
         body: JSON.stringify({
+          name,
           email,
           password,
-          confirmPassword,
         }),
       });
 
@@ -61,6 +62,14 @@ export default function RegisterPage() {
             className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Name or Username"
+            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
           <input

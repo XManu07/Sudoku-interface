@@ -3,19 +3,45 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const router = useRouter();
-  const authToken = localStorage.getItem("authToken"); 
+  const [authToken, setAuthToken] = useState<string | null>(null);
 
-  const handleStartGameClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    if (authToken) {
-      router.push("/game");
-    } else {
+  useEffect(() => {
+    setAuthToken(localStorage.getItem("authToken"));
+  }, []);
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
       router.push("/login");
+      return;
     }
+
+    try {
+      const response = await fetch("http://localhost:8000/api/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        console.log("Logged out from backend");
+      } else {
+        console.warn("Backend logout failed, status:", response.status);
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+
+    localStorage.removeItem("authToken");
+    setAuthToken(null);
+    router.push("/login");
   };
 
   return (
@@ -26,24 +52,32 @@ export default function Header() {
       </div>
 
       <nav className="flex gap-4">
-        <button
-          onClick={handleStartGameClick}
-          className="px-4 py-2 bg-white text-black font-semibold rounded-xl hover:bg-violet-400 hover:text-white hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950"
-        >
-          Start Game
-        </button>
-        <Link
-          href="/login"
-          className="px-4 py-2 bg-gray-800 text-white font-semibold rounded-xl hover:bg-violet-600 hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950"
-        >
-          Login
-        </Link>
-        <Link
-          href="/register"
-          className="px-4 py-2 bg-gray-800 text-white font-semibold rounded-xl hover:bg-violet-600 hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950"
-        >
-          Register
-        </Link>
+          <>
+            <Link
+              href="/"
+              className="px-4 py-2 bg-gray-800 text-white font-semibold rounded-xl hover:bg-violet-600 hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950"
+            >
+              Home
+            </Link>
+            <Link
+              href="/login"
+              className="px-4 py-2 bg-gray-800 text-white font-semibold rounded-xl hover:bg-violet-600 hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950"
+            >
+              Login
+            </Link>
+            <Link
+              href="/register"
+              className="px-4 py-2 bg-gray-800 text-white font-semibold rounded-xl hover:bg-violet-600 hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950"
+            >
+              Register
+            </Link>
+          </>
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 bg-red-600 text-white font-semibold rounded-xl hover:bg-red-800 hover:shadow-[0px_0px_6px_3px_rgb(255,150,150)] transition-colors border-2 border-red-800"
+          >
+            Logout
+          </button>
       </nav>
     </header>
   );

@@ -5,11 +5,11 @@ import Link from "next/link";
 
 export default function Landing() {
   const router = useRouter();
-  const authToken = localStorage.getItem("authToken"); 
+  const authToken = localStorage.getItem("authToken");
 
   const handleStartGameClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    
+
     if (authToken) {
       router.push("/game");
     } else {
@@ -35,20 +35,6 @@ export default function Landing() {
         >
           Start Game
         </button>
-
-        <Link
-          href="/login"
-          className="px-6 py-3 bg-gray-800 text-white font-semibold rounded-2xl hover:bg-violet-600 hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950 min-w-48 text-center"
-        >
-          Login
-        </Link>
-
-        <Link
-          href="/register"
-          className="px-6 py-3 bg-gray-800 text-white font-semibold rounded-2xl hover:bg-violet-600 hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950 min-w-48 text-center"
-        >
-          Register
-        </Link>
       </div>
     </main>
   );

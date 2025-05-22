@@ -32,7 +32,7 @@ const handleLogin = async (e: React.FormEvent) => {
     const data = await res.json();
     localStorage.setItem("authToken", data.authToken);
 
-    router.push("/home");
+    router.push("/");
   } catch (err) {
     console.error("Something went wrong: ", err);
     alert("An error occurred. Please try again.");
