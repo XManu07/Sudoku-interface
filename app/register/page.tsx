@@ -50,16 +50,22 @@ export default function RegisterPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-900 p-4">
-      <div className="bg-gray-800 p-8 rounded-2xl shadow-lg w-full max-w-md">
-        <h1 className="text-3xl font-bold text-white mb-6 text-center">Register</h1>
+      <div className="bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-lg w-full max-w-md sm:max-w-lg md:max-w-md">
+        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 text-center">
+          Register
+        </h1>
 
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {error && (
+          <p className="text-red-500 text-center mb-4 text-sm sm:text-base">
+            {error}
+          </p>
+        )}
 
         <form onSubmit={handleRegister} className="flex flex-col gap-4">
           <input
             type="email"
             placeholder="Email"
-            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400"
+            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400 text-sm sm:text-base"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -67,7 +73,7 @@ export default function RegisterPage() {
           <input
             type="text"
             placeholder="Name or Username"
-            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400"
+            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400 text-sm sm:text-base"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -75,7 +81,7 @@ export default function RegisterPage() {
           <input
             type="password"
             placeholder="Password"
-            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400"
+            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400 text-sm sm:text-base"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -83,14 +89,14 @@ export default function RegisterPage() {
           <input
             type="password"
             placeholder="Confirm Password"
-            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400"
+            className="px-4 py-3 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-violet-400 text-sm sm:text-base"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
           <button
             type="submit"
-            className="bg-violet-600 hover:bg-violet-800 text-white font-semibold py-3 rounded-xl transition duration-200"
+            className="bg-violet-600 hover:bg-violet-800 text-white font-semibold py-3 rounded-xl transition duration-200 text-sm sm:text-base"
           >
             Register
           </button>
