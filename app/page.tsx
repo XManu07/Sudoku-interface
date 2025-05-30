@@ -13,7 +13,8 @@ export default function Landing() {
 
   const handleStartGameClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push(authToken ? "/game" : "/login");
+    // router.push(authToken ? "/game" : "/login");
+    router.push('/game');
   };
 
   return (

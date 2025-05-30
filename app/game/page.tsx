@@ -308,54 +308,55 @@ export default function Game() {
 
   return (
     <main className="flex flex-col min-h-screen items-center justify-start bg-gray-900 p-2 gap-4">
-      <div className="flex flex-row justify-center items-start gap-12 max-w-7xl">
-        <div className="flex flex-col gap-24 items-center mt-30 flex-wrap">
-          <MainButtons
-            onPencilClick={handlePencilClick}
-            onEraserClick={handleEraserClick}
-            pencilActive={pencilActive}
-            eraserActive={eraserActive}
-            difficulty={difficulty}
-            onDifficultyChange={hancleDifficultyChange}
-          />
-        </div>
+  {/* Outer container: stack columns on mobile, row on sm+ */}
+  <div className="flex flex-col sm:flex-row justify-center items-start gap-8 sm:gap-12 max-w-7xl w-full px-4">
+    
+    {/* Left sidebar */}
+    <div className="flex flex-col gap-24 items-center mt-10 w-full sm:w-auto">
+      <MainButtons
+        onPencilClick={handlePencilClick}
+        onEraserClick={handleEraserClick}
+        pencilActive={pencilActive}
+        eraserActive={eraserActive}
+        difficulty={difficulty}
+        onDifficultyChange={hancleDifficultyChange}
+      />
+    </div>
 
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex w-full max-w-md justify-between items-center">
-            <div className="text-white font-mono text-xl">
-              Mistakes: {mistakes}/3
-            </div>
-            <div className="flex items-center gap-4">
-              <Timer
-                elapsedTime={elapsedTime}
-                handleTimer={handleTimerRunning}
-              />
-            </div>
-          </div>
-
-          <SudokuGrid
-            cellValues={cellValues}
-            selectedCell={selectedCell}
-            highlightedNumber={highlightedNumber}
-            onCellClick={handleCellClick}
-            onNumberClick={handleNumberClick}
-            numbersAppearance={numbersOccurrences}
-            cellPencilValues={cellPencilValues}
-            error={error}
-            showGrid={showGrid}
-          />
-        </div>
-
-        <div className="flex flex-col gap-12 items-center mt-30">
-          <SidebarButtons
-            onAdd={handleAdd}
-            onSolve={handleSolve}
-            onClear={handleClear}
-            onHint={handleHint}
-            onGenerate={handleGenerate}
-          />
+    {/* Center content */}
+    <div className="flex flex-col items-center gap-3 w-full max-w-md">
+      <div className="flex w-full justify-between items-center mb-4">
+        <div className="text-white font-mono text-xl">Mistakes: {mistakes}/3</div>
+        <div className="flex items-center gap-4">
+          <Timer elapsedTime={elapsedTime} handleTimer={handleTimerRunning} />
         </div>
       </div>
-    </main>
+
+      <SudokuGrid
+        cellValues={cellValues}
+        selectedCell={selectedCell}
+        highlightedNumber={highlightedNumber}
+        onCellClick={handleCellClick}
+        onNumberClick={handleNumberClick}
+        numbersAppearance={numbersOccurrences}
+        cellPencilValues={cellPencilValues}
+        error={error}
+        showGrid={showGrid}
+      />
+    </div>
+
+    {/* Right sidebar */}
+    <div className="flex flex-col gap-12 items-center mt-10 w-full sm:w-auto">
+      <SidebarButtons
+        onAdd={handleAdd}
+        onSolve={handleSolve}
+        onClear={handleClear}
+        onHint={handleHint}
+        onGenerate={handleGenerate}
+      />
+    </div>
+  </div>
+</main>
+
   );
 }
