@@ -46,8 +46,7 @@ export default function Header() {
 
   return (
     <header className="w-full px-4 py-3 bg-gray-900 rounded-3xl shadow-md border-2 border-violet-950 mt-4 mx-auto max-w-6xl">
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
-        {/* Logo Section */}
+      <div className="flex flex-col justify-between sm:flex-row items-center gap-4 sm:gap-4 ">
         <div className="flex items-center gap-3 sm:gap-5">
           <Image src="/logo.png" alt="Sudoku Logo" width={40} height={40} />
           <h1 className="text-2xl sm:text-3xl font-bold text-violet-500">
@@ -55,8 +54,7 @@ export default function Header() {
           </h1>
         </div>
 
-        {/* Nav Section */}
-        <nav className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center">
+        <nav className="flex flex-row flex-wrap gap-2 sm:gap-4 items-center">
           <Link
             href="/"
             className="px-4 py-2 bg-gray-800 text-white font-semibold rounded-xl hover:bg-violet-600 hover:shadow-[0px_0px_6px_3px_rgb(180,180,255)] transition-colors border-2 border-violet-950 w-full sm:w-auto text-center"

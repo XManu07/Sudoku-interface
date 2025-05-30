@@ -52,7 +52,7 @@ export default function SidebarButtons({
   };
 
   return (
-    <div className="flex flex-col gap-8 md:ml-6">
+    <div className="flex flex-col md:gap-8 gap-2">
       <SidebarButton action={handleOpen} buttonName={"Add"} />
 
       {isOpen && (
@@ -65,7 +65,7 @@ export default function SidebarButtons({
           <textarea
             value={puzzleInput}
             onChange={handlePuzzleInputChange}
-            className="bg-white w-100 h-32 border border-gra300 rounded"
+            className="bg-white w-100 h-32 border border-gray-300 rounded"
             placeholder="Your string here"
           />
 

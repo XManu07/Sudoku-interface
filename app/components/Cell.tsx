@@ -25,7 +25,7 @@ export default function Cell({
     if (value !== null) return null;
 
     return (
-      <div className="grid grid-cols-3 grid-rows-3 w-full h-full text-xs text-gray-500">
+      <div className="grid grid-cols-3 grid-rows-3 w-full h-full text-[0.5rem] sm:text-xs text-gray-500">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
           <div key={num} className="flex items-center justify-center">
             {pencilValues.includes(num) ? num : ""}
@@ -39,7 +39,7 @@ export default function Cell({
     <div
       onClick={() => onCellClick(index)}
       className={`
-        cell w-full h-full flex items-center justify-center font-bold p-0 outline-none 
+        cell aspect-square flex items-center justify-center font-bold p-0 outline-none
         ${
           boxBorderRight
             ? "border-r-2 border-r-gray-800"
@@ -60,9 +60,11 @@ export default function Cell({
             : "bg-transparent"
         }
         cursor-pointer hover:bg-gray-100 transition-colors
+        text-2xl sm:text-3xl md:text-4xl
+        w-full h-full
       `}
     >
-      {value ? <span className="text-4xl">{value}</span> : renderPencilValues()}
+      {value ? <span>{value}</span> : renderPencilValues()}
     </div>
   );
 }
